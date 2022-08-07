@@ -41,7 +41,6 @@ if ($title && $content){
         header("Location: Home.php");
         exit;
     }
-
     $title = $article["title"];
     $content = $article["content"];
 }
