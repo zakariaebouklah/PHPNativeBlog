@@ -9,13 +9,17 @@ if($id === null){
     exit;
 }
 
-$article = [];
-
 $sql = "select * from article where id = :id";
 $statement = $pdo->prepare($sql);
 $statement->bindParam("id", $id);
 $statement->execute();
 $article = $statement->fetch();
+
+if($article === false){
+    header("Location : Accueil.php");
+    exit;
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -38,5 +42,3 @@ $article = $statement->fetch();
     </div>
 </body>
 </html>
-
-

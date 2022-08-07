@@ -37,8 +37,6 @@
                 echo "No Articles";
             }
         ?>
-        
-        
     </div>
 </body>
 </html>
