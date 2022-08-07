@@ -9,11 +9,12 @@
     $password = $_POST['password'] ?? "";
 
     if($mail && $username && $password){
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
         $sql = "insert into user (email, username, password) values (:mail, :username, :password)";
         $statement = $pdo->prepare($sql);
         $statement->bindParam("mail",$mail);
         $statement->bindParam("username",$username);
-        $statement->bindParam("password",$password);
+        $statement->bindParam("password",$hashedPassword);
 
         if ($statement->execute()){
             $_SESSION["isLoggedIn"] = true;

@@ -9,14 +9,13 @@
     $errorInLogIn = "";
 
     if($username && $password){
-        $sql = "select * from user where username = :username && password = :password";
+        $sql = "select * from user where username = :username";
         $statement = $pdo->prepare($sql);
         $statement->bindParam("username", $username);
-        $statement->bindParam("password", $_SESSION["passWord"]);
         $statement->execute();
         $users = $statement->fetch(PDO::FETCH_ASSOC);
 
-        if(count($users) > 0){
+        if(count($users) > 0 && password_verify($password, $users["password"])){
             $_SESSION["isLoggedIn"] = true;
             $_SESSION["userName"] = $username;
             header("Location: Home.php");
