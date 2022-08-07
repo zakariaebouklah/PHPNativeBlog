@@ -17,13 +17,14 @@
         $statement->bindParam("password",$hashedPassword);
 
         if ($statement->execute()){
+            $var = $pdo->lastInsertId();
             $_SESSION["isLoggedIn"] = true;
             $_SESSION["userName"] = $username;
+            $_SESSION["id_user"] = $var;
             header("Location: Home.php");
             exit;
         }
     }
-
 ?>
 
 <!DOCTYPE html>

@@ -18,6 +18,7 @@
         if(count($users) > 0 && password_verify($password, $users["password"])){
             $_SESSION["isLoggedIn"] = true;
             $_SESSION["userName"] = $username;
+            $_SESSION["id_user"] = $users["id"];
             header("Location: Home.php");
             exit;
         }else{
