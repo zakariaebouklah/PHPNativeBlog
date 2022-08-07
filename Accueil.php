@@ -1,4 +1,15 @@
 
+<?php
+    require_once("./foo/dbConn.php");
+
+    $articles = [];
+
+    $sql = "select * from article order by created_at desc limit 10";
+    $statement = $pdo->query($sql);
+    $statement->execute();
+    $articles = $statement->fetchAll();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,12 +20,25 @@
 </head>
 <body>
     <h1>Welcome To Our Mini Blog</h1>
-    <form action="SignIn.php" method="post">
-        <input type='submit' value='Sign Up' name='SignUp'/>
-    </form>
+    <a href="SignIn.php">Sign In</a>
     <br/>
-    <form action="LogIn.php" method="post">
-        <input type='submit' value='Log In' name='LogIn'/>
-    </form>
+    <a href="LogIn.php">Log In</a>
+    <div>
+        <?php
+            if(count($articles) > 0){
+                echo "Latest Articles : <br>";
+                foreach ($articles as $article){
+                    printf('<hr/><hr/><div>
+                               <div class="title"><a href="showArticle.php?post_id=%d">%s</a></div>
+                               <div class="content">%s</div>
+                    </div>', $article['id'], $article['title'], $article['content']);
+                }
+            }else{
+                echo "No Articles";
+            }
+        ?>
+        
+        
+    </div>
 </body>
 </html>
