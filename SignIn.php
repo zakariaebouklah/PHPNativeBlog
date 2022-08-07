@@ -24,11 +24,7 @@
             header("Location: Home.php");
             exit;
         }
-
-
-
     }
-
 ?>
 
 <!DOCTYPE html>
