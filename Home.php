@@ -23,7 +23,7 @@
     <title>Home Page</title>
 </head>
 <body>
-    <?= "<h1>You're Logged In!!</h1>" ?>
+    <h1>You're Logged In!!</h1>
     <?= "<h1>This is the Home Page ! Welcome {$_SESSION["userName"]}</h1>" ?>
     <a style="margin-right: 5px;" href="AddArticle.php">Add New Article</a>
     <hr/>

@@ -18,7 +18,6 @@
         if ($statement->execute()){
             $_SESSION["isLoggedIn"] = true;
             $_SESSION["userName"] = $username;
-            $_SESSION["passWord"] = $password;
             header("Location: Home.php");
             exit;
         }
